@@ -50,16 +50,20 @@ int main() {
                 case SDL_EVENT_KEY_DOWN:
                     switch (event.key.key) {
                         case SDLK_UP:
-                            snake.direction = up;
+                            if (snake.direction != down)
+                                snake.direction = up;
                             break;
                         case SDLK_DOWN:
-                            snake.direction = down;
+                            if (snake.direction != up)
+                                snake.direction = down;
                             break;
                         case SDLK_LEFT:
-                            snake.direction = left;
+                            if (snake.direction != right)
+                                snake.direction = left;
                             break;
                         case SDLK_RIGHT:
-                            snake.direction = right;
+                            if (snake.direction != left)
+                                snake.direction = right;
                             break;
                         case SDLK_RETURN:
                             expand_snake(&snake);
