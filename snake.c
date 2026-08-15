@@ -18,7 +18,7 @@ void init_snake(snakemanager* mgr) {
     mgr->is_dead = false;
 
     for (int i = 0; i < mgr->number; i++) {
-        mgr->snake[i].x = init_block_x;
+        mgr->snake[i].x = init_block_x - block_size * i;
         mgr->snake[i].y = init_block_y;
 
         if (i == 0) {
@@ -66,6 +66,12 @@ void move_snake(snakemanager* mgr) {
                 mgr->snake[0].y += block_size;
             }
             break;
+    }
+
+    for (int i = mgr->number-1; i > 0; i--) {
+        if (mgr->snake[i].x == mgr->snake[0].x && mgr->snake[i].y == mgr->snake[0].y) {
+            mgr->is_dead = true;
+        }
     }
 }
 
