@@ -177,12 +177,6 @@ int main() {
             frame_tick = 0;
         }
 
-        for (int i = 0; i < snake.number; i++) {
-            printf("x: %d, y: %d\n", snake.snake[i].x, snake.snake[i].y);
-        }
-
-        printf("\n");
-
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
