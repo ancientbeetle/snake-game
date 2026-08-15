@@ -13,7 +13,7 @@ void free_snake(snakemanager* mgr) {
 }
 
 void init_snake(snakemanager* mgr) {
-    mgr->number = 5;    // for now ill make snakes be 2 units long, i might standardize this later
+    mgr->number = default_snake_length;
     mgr->snake = malloc(sizeof(snakepart) * mgr->number);
     mgr->is_dead = false;
 

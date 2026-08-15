@@ -20,4 +20,6 @@ extern const int last_block_y;
 
 extern SDL_FRect grid_rect;
 
+extern const int default_snake_length;
+
 #endif

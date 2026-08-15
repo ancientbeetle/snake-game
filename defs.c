@@ -12,4 +12,6 @@ const int init_block_y = (window_height - (block_size * canvas_height)) / 2; // 
 const int last_block_x = init_block_x + (block_size * canvas_width);
 const int last_block_y = init_block_y + (block_size * canvas_height);
 
+const int default_snake_length = 3;
+
 SDL_FRect grid_rect = {(float)init_block_x, (float)init_block_y, (float)block_size * canvas_width, (float)block_size * canvas_height};
