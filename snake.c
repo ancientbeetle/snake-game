@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-const float move_rate = 200;
+const float move_rate = 100;
 
 SDL_FRect snakepart_rect;
 
