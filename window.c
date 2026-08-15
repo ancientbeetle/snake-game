@@ -61,6 +61,8 @@ int main() {
                         case SDLK_RIGHT:
                             snake.direction = right;
                             break;
+                        case SDLK_RETURN:
+                            expand_snake(&snake);
                     }
             }
         }

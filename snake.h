@@ -33,6 +33,7 @@ void init_snake(snakemanager* mgr);
 void move_snake(snakemanager* mgr);
 void free_snake(snakemanager* mgr);
 void draw_snake(snakemanager *mgr, SDL_Renderer* renderer);
+int expand_snake(snakemanager* mgr);
 
 extern const float move_rate;
 

@@ -1,6 +1,8 @@
 #include "snake.h"
 #include "defs.h"
 #include <SDL3/SDL.h>
+#include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -29,6 +31,24 @@ void init_snake(snakemanager* mgr) {
     }
 
     mgr->direction = right;
+}
+
+int expand_snake(snakemanager* mgr) {
+    mgr->number++;
+    snakepart* _parts = realloc(mgr->snake, sizeof(snakepart) * mgr->number);
+    if (_parts == NULL) {
+        puts("Error: allocation failed");
+        free(_parts);
+        return -1;
+    }
+    
+    _parts[mgr->number-1].type = child;
+    _parts[mgr->number-1].x = _parts[mgr->number-2].x;
+    _parts[mgr->number-1].y = _parts[mgr->number-2].y;
+
+    mgr->snake = _parts;
+
+    return 0;
 }
 
 void move_snake(snakemanager* mgr) {
