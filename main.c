@@ -84,27 +84,31 @@ void move_snake(snakemanager* mgr) {
 
     switch (mgr->direction) {
         case left:
-            mgr->snake[0].x -= block_size;
-            if (mgr->snake[0].x < init_block_x) {
+            if (mgr->snake[0].x - block_size < init_block_x) {
                 window_should_close = true;
+            } else {
+                mgr->snake[0].x -= block_size;
             }
             break;
         case right:
-            mgr->snake[0].x += block_size;
-            if (mgr->snake[0].x >= last_block_x) {
+            if (mgr->snake[0].x + block_size >= last_block_x) {
                 window_should_close = true;
+            } else {
+                mgr->snake[0].x += block_size;
             }
             break;
         case up:
-            mgr->snake[0].y -= block_size;
-            if (mgr->snake[0].y < init_block_y) {
+            if (mgr->snake[0].y - block_size < init_block_y) {
                 window_should_close = true;
+            } else {
+                mgr->snake[0].y -= block_size;
             }
             break;
         case down:
-            mgr->snake[0].y += block_size;
-            if (mgr->snake[0].y >= last_block_y) {
+            if (mgr->snake[0].y + block_size >= last_block_y) {
                 window_should_close = true;
+            } else {
+                mgr->snake[0].y += block_size;
             }
             break;
     }
