@@ -17,8 +17,8 @@ typedef enum {
 } directions;
 
 typedef struct {
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
     snaketype type;
 } snakepart;
 

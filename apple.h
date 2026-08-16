@@ -1,8 +1,8 @@
 #include "snake.h"
 
 typedef struct {
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
 } applemanager;
 
 void spawn_apple(applemanager* a_mgr, snakemanager* s_mgr);
