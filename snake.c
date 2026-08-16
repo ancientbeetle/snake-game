@@ -19,8 +19,8 @@ int init_snake(snakemanager* mgr, SDL_Renderer* renderer) {
     mgr->is_dead = false;
 
     for (int i = 0; i < mgr->number; i++) {
-        mgr->snake[i].x = init_block_x - block_size * i;
-        mgr->snake[i].y = init_block_y;
+        mgr->snake[i].x = init_block_x - block_size * i + spawn_offset_x * block_size;
+        mgr->snake[i].y = init_block_y + spawn_offset_y * block_size;
 
         if (i == 0) {
             mgr->snake[i].type = parent;

@@ -6,6 +6,9 @@ const int window_height = 640;
 const int canvas_width = 20;
 const int canvas_height = 20;
 
+const int spawn_offset_x = canvas_width / 2;
+const int spawn_offset_y = canvas_width / 2;
+
 const int block_size = 24; // size of every grid block
 const int init_block_x = (window_width - (block_size * canvas_width)) / 2; // X of the first grid block
 const int init_block_y = (window_height - (block_size * canvas_height)) / 2; // Y of the first grid block

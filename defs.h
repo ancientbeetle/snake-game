@@ -22,4 +22,7 @@ extern SDL_FRect grid_rect;
 
 extern const int default_snake_length;
 
+extern const int spawn_offset_x;
+extern const int spawn_offset_y;
+
 #endif
