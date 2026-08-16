@@ -27,13 +27,18 @@ typedef struct {
     int number;
     int direction;
     bool is_dead;
+    SDL_Texture* tex;
+    SDL_Texture* tex_up;
+    SDL_Texture* tex_down;
+    SDL_Texture* tex_left;
+    SDL_Texture* tex_right;
 } snakemanager;
 
-void init_snake(snakemanager* mgr);
+int init_snake(snakemanager* mgr, SDL_Renderer* renderer);
 void move_snake(snakemanager* mgr);
 void free_snake(snakemanager* mgr);
 void draw_snake(snakemanager *mgr, SDL_Renderer* renderer);
-int expand_snake(snakemanager* mgr);
+void expand_snake(snakemanager* mgr);
 
 extern const float move_rate;
 

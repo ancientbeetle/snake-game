@@ -1,3 +1,4 @@
+#include "window.h"
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_gpu.h>
 #include <SDL3/SDL_init.h>
@@ -19,10 +20,16 @@
 #include "apple.h"
 #include "canvas.h"
 
+#include <stdio.h>
+
 bool window_should_close = false;
 
-SDL_Window* window;
-SDL_Renderer* renderer;
+SDL_Window* window = NULL;
+SDL_Renderer* renderer = NULL;
+
+void destroy_all() {
+    window_should_close = true;
+}
 
 int main() {
     srand(time(NULL));
@@ -32,14 +39,39 @@ int main() {
     }
 
     window = SDL_CreateWindow("Snake", window_width, window_height, 0);
+    if (window == NULL) {
+        puts("Error: unable to create window");
+        SDL_Quit();
+        return -1;
+    }
     renderer = SDL_CreateRenderer(window, 0);
+    if (renderer == NULL) {
+        puts("Error: unable to create renderer");
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+    }
 
     SDL_SetWindowSurfaceVSync(window, true);
 
     snakemanager snake;
     applemanager apple;
-    init_snake(&snake);
-    spawn_apple(&apple, &snake);
+    int t = init_snake(&snake, renderer);
+    if (t == false) {
+        SDL_DestroyWindow(window);
+        SDL_DestroyRenderer(renderer);
+        SDL_Quit();
+        return -1;
+    }
+
+    t = init_apple(&apple, &snake, renderer);
+    if (t == false) {
+        free_snake(&snake);
+        SDL_DestroyWindow(window);
+        SDL_DestroyRenderer(renderer);
+        SDL_Quit();
+        return -1;
+    }
 
     float frame_tick = 0;
 
@@ -104,6 +136,7 @@ int main() {
     }
 
     free_snake(&snake);
+    free_apple(&apple);
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
