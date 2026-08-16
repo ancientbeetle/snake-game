@@ -8,12 +8,15 @@
 #include <SDL3/SDL_timer.h>
 #include <SDL3/SDL_video.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
 #include "defs.h"
 #include "snake.h"
+#include "apple.h"
 #include "canvas.h"
 
 bool window_should_close = false;
@@ -22,6 +25,8 @@ SDL_Window* window;
 SDL_Renderer* renderer;
 
 int main() {
+    srand(time(NULL));
+
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)) {
         return -1;
     }
@@ -32,7 +37,9 @@ int main() {
     SDL_SetWindowSurfaceVSync(window, true);
 
     snakemanager snake;
+    applemanager apple;
     init_snake(&snake);
+    spawn_apple(&apple, &snake);
 
     float frame_tick = 0;
 
@@ -80,6 +87,7 @@ int main() {
             frame_tick += delta_time;
         } else {
             move_snake(&snake);
+            update_apple(&apple, &snake);
             frame_tick = 0;
         }
 
@@ -88,6 +96,7 @@ int main() {
 
         draw_canvas(renderer);
         draw_snake(&snake, renderer);
+        draw_apple(&apple, renderer);
 
         if (snake.is_dead) {
             window_should_close = true;
