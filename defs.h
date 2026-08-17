@@ -25,4 +25,6 @@ extern const int default_snake_length;
 extern const int spawn_offset_x;
 extern const int spawn_offset_y;
 
+extern const char bg_color[3];
+
 #endif

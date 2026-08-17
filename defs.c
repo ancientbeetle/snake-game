@@ -17,4 +17,6 @@ const int last_block_y = init_block_y + (block_size * canvas_height);
 
 const int default_snake_length = 3;
 
+const char bg_color[3] = { 130, 158, 178 };
+
 SDL_FRect grid_rect = {(float)init_block_x, (float)init_block_y, (float)block_size * canvas_width, (float)block_size * canvas_height};

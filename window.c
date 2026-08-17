@@ -130,7 +130,7 @@ int main() {
             frame_tick = 0;
         }
 
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_SetRenderDrawColor(renderer, bg_color[0], bg_color[1], bg_color[2], 255);
         SDL_RenderClear(renderer);
 
         draw_canvas(renderer);
