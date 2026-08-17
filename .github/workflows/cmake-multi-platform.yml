@@ -41,6 +41,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: ilammy/msvc-dev-cmd@v1
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
@@ -70,12 +71,12 @@ jobs:
     - name: Install SDL3 dependencies
       run: mkdir subprojects && meson wrap install sdl3 && meson wrap install sdl3_image
 
-    - name: Configure Project
+    - name: Configure Projectx
       run: meson setup ${{ steps.strings.outputs.build-output-dir }}
       #env:
       #  CC: ${{ matrix.c_compiler }}
         
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
-      run: cd ${{ steps.strings.outputs.build-output-dir }} && meson compile
+      run: meson compile -C ${{ steps.strings.outputs.build-output-dir }}
       
