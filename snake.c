@@ -75,6 +75,10 @@ int init_snake(snakemanager* mgr, SDL_Renderer* renderer) {
 }
 
 void free_snake(snakemanager* mgr) {
+    if (score > high_score) {
+        high_score = score;
+    }
+
     free(mgr->snake);
     SDL_DestroyTexture(mgr->tex);
     SDL_DestroyTexture(mgr->tex_up);
