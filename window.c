@@ -73,6 +73,15 @@ int main() {
         return -1;
     }
 
+    t = init_canvas(renderer);
+    if (t == false) {
+        free_snake(&snake);
+        free_apple(&apple);
+        SDL_DestroyWindow(window);
+        SDL_DestroyRenderer(renderer);
+        SDL_Quit();
+    }
+
     float frame_tick = 0;
 
     Uint64 now = SDL_GetPerformanceCounter();
@@ -137,6 +146,7 @@ int main() {
 
     free_snake(&snake);
     free_apple(&apple);
+    free_canvas();
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
