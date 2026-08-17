@@ -31,7 +31,7 @@ void destroy_all() {
     window_should_close = true;
 }
 
-int main() {
+int handle_window() {
     srand(time(NULL));
 
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)) {

@@ -13,7 +13,12 @@ const float move_rate = 100;
 
 SDL_FRect snakepart_rect;
 
+int score;
+int high_score;
+
 int init_snake(snakemanager* mgr, SDL_Renderer* renderer) {
+    score = 0;
+
     mgr->number = default_snake_length;
     mgr->snake = malloc(sizeof(snakepart) * mgr->number);
     mgr->is_dead = false;
@@ -90,6 +95,8 @@ void expand_snake(snakemanager* mgr) {
     _parts[mgr->number-1].type = child;
     _parts[mgr->number-1].x = _parts[mgr->number-2].x;
     _parts[mgr->number-1].y = _parts[mgr->number-2].y;
+
+    score++;
 
     mgr->snake = _parts;
 }
