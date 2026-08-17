@@ -43,6 +43,6 @@ void expand_snake(snakemanager* mgr);
 extern int score;
 extern int high_score;
 
-extern const float move_rate;
+extern float move_rate;
 
 #endif

@@ -9,7 +9,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-const float move_rate = 100;
+float move_rate = 100;
 
 SDL_FRect snakepart_rect;
 

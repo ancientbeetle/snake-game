@@ -2,7 +2,19 @@
 #include "snake.h"
 #include "ext/tinyfiledialogs/tinyfiledialogs.h"
 #include <stdio.h>
+#include <string.h>
+
 int main() {
+    const char* diff = tinyfd_inputBox("Snake", "Please choose a difficulty (easy, normal, hard)", "easy");
+    if (!strcmp(diff, "easy")) {
+        move_rate = 150;
+    }
+    if (!strcmp(diff, "normal")) {
+        move_rate = 100;
+    }
+    if (!strcmp(diff, "hard")) {
+        move_rate = 60;
+    }
 
     int r = handle_window();
     if (r != 0) {
